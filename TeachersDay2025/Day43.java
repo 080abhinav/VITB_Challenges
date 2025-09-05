@@ -7,30 +7,24 @@ public class Day43 {
         Scanner scn = new Scanner(System.in);
         String s = scn.nextLine();
         String ans = "";
-
         if (s.length() == 1) {
-            if (s.charAt(0) >= 65 && s.charAt(0) <= 90) {
+            if (Character.isUpperCase(s.charAt(0))) {
                 ans = s.toLowerCase();
             } else {
-                ans = s;
+                ans = s.toUpperCase();
             }
-        }
-
-        else {
-            int check = 0;
+        } else {
+            int check = 1;
             int ch = 0;
-            if (s.charAt(0) >= 65 && s.charAt(0) <= 90) {
+            if (s.charAt(0) >= 'A' && s.charAt(0) <= 'Z') {
                 ch = 1;
             }
             for (int i = 1; i < s.length(); i++) {
-                if (s.charAt(i) >= 65 && s.charAt(i) <= 90) {
-                    check = 1;
-                } else {
+                if (!(s.charAt(i) >= 'A' && s.charAt(i) <= 'Z')) {
                     check = 0;
                     break;
                 }
             }
-
             if (check == 1 && ch == 1) {
                 ans = s.toLowerCase();
             } else if (check == 1 && ch == 0) {
@@ -46,7 +40,6 @@ public class Day43 {
                 ans = s;
             }
         }
-
         System.out.println(ans);
         scn.close();
     }
